@@ -998,7 +998,7 @@ func (c *cmdImageList) uploadDateColumnData(image api.Image) string {
 	return image.UploadedAt.UTC().Format("Jan 2, 2006 at 3:04pm (MST)")
 }
 
-func (c *cmdImageList) shortestAlias(list []api.ImageAlias) string {
+func imageShortestAlias(list []api.ImageAlias) string {
 	shortest := ""
 	for _, l := range list {
 		if shortest == "" {
@@ -1011,6 +1011,10 @@ func (c *cmdImageList) shortestAlias(list []api.ImageAlias) string {
 	}
 
 	return shortest
+}
+
+func (c *cmdImageList) shortestAlias(list []api.ImageAlias) string {
+	return imageShortestAlias(list)
 }
 
 func (c *cmdImageList) findDescription(props map[string]string) string {
